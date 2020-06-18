@@ -1,0 +1,3 @@
+create a player class with canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExperience properties and allow people from the people list to be added to the player list array
+create a list that appears in the DOM with bottons for each player to add the player to red or blue team and a remove button to push them back to the people list
+create a blueTeam and redTeam class and allow people from the player list to be added to  either team with the added properties of mascot and team color and display the teams in the DOM with red text for red team and blue text for blue team, when players are added they should each have a remove button to return them to the player list
