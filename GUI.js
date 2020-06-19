@@ -55,7 +55,13 @@ const arrOfPeople = [
   const redTeam = []
   
   class player {
-    constructor(){}
+    constructor(canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExperience){
+      this.canThrowBall = canThrowBall;
+      this.canDodgeBall = canDodgeBall;
+      this.hasPaid = hasPaid;
+      this.isHealthy = isHealthy;
+      this.yearsExperience = yearsExperience
+    }
   }
   class blueTeammate {
     constructor(){}
@@ -78,5 +84,26 @@ const arrOfPeople = [
   }
   
   const makePlayer = (id) => {
+    for (let i = 0; i < arrOfPeople.length; i++){
+      if (id === arrOfPeople[i].id){
+        listOfPlayers.unshift(arrOfPeople[i]);
+        arrOfPeople.splice(i, 1);
+      }
+    }
+    const listElement = document.getElementById('people');
+    while (listElement.hasChildNodes()) {  
+      listElement.removeChild(listElement.firstChild);
+    }
+    listPeopleChoices();
     console.log(`li ${id} was clicked!`)
+    const playerElement = document.getElementById('player')
+    const li = document.createElement("li")
+    const button1 = document.createElement("button")
+    button1.innerHTML = "Red Team"
+    button1.addEventListener('click', function() {makeRed(person.id)} )
+    const button2 = document.createElement("button")
+    button2.innerHTML = "Blue Team"
+    button2.addEventListener('click', function() {makeRed(person.id)} )
+
+
   }
