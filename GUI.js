@@ -55,7 +55,9 @@ const arrOfPeople = [
   const redTeam = []
   
   class player {
-    constructor(canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExperience){
+    constructor(id, name, canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExperience){
+      this.name = name;
+      this.id = id;
       this.canThrowBall = canThrowBall;
       this.canDodgeBall = canDodgeBall;
       this.hasPaid = hasPaid;
@@ -83,20 +85,25 @@ const arrOfPeople = [
     })
   }
   
-  const makePlayer = (id) => {
-    for (let i = 0; i < arrOfPeople.length; i++){
-      if (id === arrOfPeople[i].id){
-        listOfPlayers.unshift(arrOfPeople[i]);
-        arrOfPeople.splice(i, 1);
-      }
-    }
+    const makePlayer = (id) => {
+      let person = arrOfPeople.find(function(player){
+          return player.id == id  
+      }) 
+      let index = arrOfPeople.indexOf(person)
+      arrOfPeople.splice(index, 1)
+      //Generate Random Skill lvls for Players and push to list of players
+      const newPlayer = new player (person.id, person.name, Math.floor(Math.random()* 10 ), Math.floor(Math.random()* 10 ), Math.floor(Math.random()* 10 ), Math.floor(Math.random()* 10 ), Math.floor(Math.random()* 10 ))
+      listOfPlayers.push(newPlayer)
+      // removes person from dom
+      console.log(listOfPlayers)
     const listElement = document.getElementById('people');
     while (listElement.hasChildNodes()) {  
       listElement.removeChild(listElement.firstChild);
     }
     listPeopleChoices();
     console.log(`li ${id} was clicked!`)
-    const playerElement = document.getElementById('player')
+    const playerElement = document.getElementById('players')
+    listOfPlayers.map(person => {
     const li = document.createElement("li")
     const button1 = document.createElement("button")
     button1.innerHTML = "Red Team"
@@ -104,6 +111,9 @@ const arrOfPeople = [
     const button2 = document.createElement("button")
     button2.innerHTML = "Blue Team"
     button2.addEventListener('click', function() {makeRed(person.id)} )
-
-
-  }
+    li.appendChild(button1)
+    li.appendChild(button2)
+    li.appendChild(document.createTextNode(`Player #: ${person.id} ,  ${person.name},  ThrowBall Lvl:${person.canThrowBall} , CanDodge Lvl:${person.canDodgeBall}, IsHealthy: yes,  Years Playing:${person.yearsExperience}` ))
+    playerElement.append(li)
+    })
+    }
