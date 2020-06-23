@@ -94,6 +94,9 @@ const arrOfPeople = [
   
   const listPeopleChoices = () => {
     const listElement = document.getElementById('people')
+    while (listElement.hasChildNodes()) {  
+      listElement.removeChild(listElement.firstChild);
+    }
     arrOfPeople.map(person => {
       const li = document.createElement("li")
       const button = document.createElement("button")
@@ -169,10 +172,10 @@ const arrOfPeople = [
   const redPlayerElement = document.getElementById('red')
   // redTeam.map(person => {
   const listItem = document.createElement("li")
-  const button = document.createElement("button")
-  button.innerHTML = "Remove Player"
-  button.addEventListener('click', function() {removePlayer(person.id)})
-  listItem.appendChild(button)
+  // const button = document.createElement("button")
+  // button.innerHTML = "Remove Player"
+  // button.addEventListener('click', function() {removePlayer(person.id)})
+  // listItem.appendChild(button)
   listItem.appendChild(document.createTextNode(`Player #: ${newRed.id} ,  ${newRed.name},  ThrowBall Lvl:${newRed.canThrowBall} , CanDodge Lvl:${newRed.canDodgeBall}, IsHealthy: yes,  Years Playing:${newRed.yearsExperience}, Mascot:${newRed.mascot}, Team Color:${newRed.teamColor}` ))
   redPlayerElement.append(listItem)
   // })
@@ -209,10 +212,10 @@ playerElement.append(li)
 const bluePlayerElement = document.getElementById('blue')
 // redTeam.map(person => {
 const listItem = document.createElement("li")
-const button = document.createElement("button")
-button.innerHTML = "Remove Player"
-button.addEventListener('click', function() {removePlayer(person.id)})
-listItem.appendChild(button)
+// const button = document.createElement("button")
+// button.innerHTML = "Remove Player"
+// button.addEventListener('click', function() {removePlayer(person.id)})
+// listItem.appendChild(button)
 listItem.appendChild(document.createTextNode(`Player #: ${newBlue.id} ,  ${newBlue.name},  ThrowBall Lvl:${newBlue.canThrowBall} , CanDodge Lvl:${newBlue.canDodgeBall}, IsHealthy: yes,  Years Playing:${newBlue.yearsExperience}, Mascot:${newBlue.mascot}, Team Color:${newBlue.teamColor}` ))
 bluePlayerElement.append(listItem)
 // })
